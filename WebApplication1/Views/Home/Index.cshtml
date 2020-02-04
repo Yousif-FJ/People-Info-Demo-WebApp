@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Person>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Title";
+}
+    <div class="container">
+        <h2>List of people</h2>
+        <table class="table table-bordered text-center" style="max-width: 600px">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col"></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr scope="row">
+                    <td>@item.ID</td>
+                    <td>@item.Name</td>
+                    <td><a asp-controller="Details" asp-action="Detail" asp-route-ID="@item.ID">Open details</a></td>
+                </tr>
+            }
+
+        </table>
+
+        <a asp-controller="Home" asp-action="Add" class="btn btn-lg btn-primary"> Add person</a>
+        <a asp-controller="Error" asp-action="ThrowException" class="btn btn-lg btn-primary">Test throw exception</a>
+    </div>

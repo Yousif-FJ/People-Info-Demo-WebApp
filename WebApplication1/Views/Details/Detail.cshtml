@@ -1,0 +1,36 @@
+﻿@model PersonDetails
+@{
+    ViewData["Title"] = "Detail";
+}
+    <div>
+        <h2>Detail</h2>
+
+        <figure class="figure">
+            <img class="figure-img img-fluid rounded" src="@Model.FilePath" style="max-width:250px" asp-append-version="true" />
+            <a asp-controller="Details" asp-action="UpdatePhoto" asp-route-id="@Model.Person.ID">
+                <figcaption class="figure-caption text-center">Click to change</figcaption>
+            </a>
+        </figure>
+        <table class="table text-center" style="max-width: 500px">
+            <tr scope="row">
+                <td class="text-muted">ID</td>
+                <td>  @Model.Person.ID</td>
+            </tr>
+            <tr scope="row">
+                <td class="text-muted"> Name</td>
+                <td>@Model.Person.Name</td>
+            </tr>
+            <tr scope="row">
+                <td class="text-muted">Sector</td>
+                <td> @Model.Person.Sector</td>
+            </tr>
+            <tr scope="row">
+                <td class="text-muted">Age</td>
+                <td> @Model.Person.Age</td>
+            </tr>
+            
+        </table>
+        <a class="btn btn-lg btn-primary" asp-controller="Details" asp-action="Delete" asp-route-id=@Model.Person.ID>Delete</a>
+        <a class="btn btn-lg btn-primary" asp-controller="Details" asp-action="Update" asp-route-id=@Model.Person.ID>Edit info</a>
+
+    </div>

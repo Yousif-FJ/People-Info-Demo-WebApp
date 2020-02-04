@@ -1,0 +1,18 @@
+﻿@model UploadPicture
+@{
+    ViewData["Title"] = "UpdatePhoto";
+}
+    <div>
+
+        <img style="max-height:30%; max-width:30%" src="@Model.FilePath" asp-append-version="true" />
+
+        <form asp-controller="Details" asp-action="UpdatePhoto" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="FormFile">Chose a new photo</label><br />
+                <input asp-for="FormFile" />
+            </div>
+            <input asp-for="PersonID" hidden/>
+            <input asp-for="FilePath" hidden />
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
