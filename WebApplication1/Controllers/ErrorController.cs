@@ -27,8 +27,6 @@ namespace WebApplication1.Controllers
             ViewBag.ErrorMessage ="An error occurred at the server";
             logger.LogError( $"An excepttion happened at {exceptionHandlerPathFeature.Path} " +
                 $"with the following message : {exceptionHandlerPathFeature.Error.Message}");
-            logger.LogInformation("test");
-            logger.LogWarning("test");
             return View();
         }
 
