@@ -50,10 +50,11 @@ namespace WebApplication1
                 app.UseStatusCodePagesWithReExecute("/Error/{0}");
             }
 
+            app.UseRouting();
             app.UseStaticFiles();
-            app.UseMvc(routes =>
+            app.UseEndpoints(Endpoint =>
             {
-                routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                Endpoint.MapDefaultControllerRoute();
             });
 
         }
