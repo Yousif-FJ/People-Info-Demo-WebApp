@@ -57,7 +57,7 @@ namespace WebApplication1.Module.FileRepositories
         {
             if (fileName is null)
             {
-                throw new ArgumentNullException(nameof(fileName));
+                return null;
             }
                 string FilePath = Path.Combine(FileConatiner, fileName);
                 FileInfo file = new FileInfo(FilePath);
