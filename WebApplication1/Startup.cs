@@ -50,8 +50,13 @@ namespace WebApplication1
                 app.UseStatusCodePagesWithReExecute("/Error/{0}");
             }
 
-            app.UseRouting();
             app.UseStaticFiles();
+
+            app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseEndpoints(Endpoint =>
             {
                 Endpoint.MapDefaultControllerRoute();
