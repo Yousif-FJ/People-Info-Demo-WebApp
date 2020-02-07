@@ -1,0 +1,26 @@
+﻿@model AccountDetail
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+<h4>Input details to Login</h4>
+
+<form method="post" asp-controller="Account" asp-action="Login">
+
+    <div class="form-group">
+        <label asp-for="UserName">UserName</label>
+        <input class="form-control" asp-for="UserName" />
+        <span class="text-danger" asp-validation-for="UserName"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password">Password</label>
+        <input class="form-control" asp-for="Password" />
+        <span class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-lg btn-primary">Login</button>
+
+</form>
+

@@ -1,0 +1,25 @@
+﻿@model AccountDetail
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Register</h2>
+<h4>Input details to Register</h4>
+
+<form method="post" asp-controller="Account" asp-action="Register">
+
+    <div class="form-group">
+        <label asp-for="UserName">UserName</label>
+        <input class="form-control" asp-for="UserName" />
+        <span class="text-danger" asp-validation-for="UserName"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password">Password</label>
+        <input class="form-control" asp-for="Password" />
+        <span class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-lg btn-primary">Register</button>
+</form>
