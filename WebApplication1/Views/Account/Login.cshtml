@@ -7,7 +7,7 @@
 <h2>Login</h2>
 <h4>Input details to Login</h4>
 
-<form method="post" asp-controller="Account" asp-action="Login">
+<form method="post" style="max-width:400px" asp-controller="Account" asp-action="Login">
 
     <div class="form-group">
         <label asp-for="UserName">UserName</label>
@@ -20,6 +20,13 @@
         <input class="form-control" asp-for="Password" />
         <span class="text-danger"></span>
     </div>
+
+    <div class="ml-3 mb-3">
+        <input class="form-check-input" asp-for="PresistantLogin" />
+        <label class="form-check-label" asp-for="PresistantLogin">Remember my login</label>
+    </div>
+
+    <div class="text-danger" asp-validation-summary="All"></div>
     <button type="submit" class="btn btn-lg btn-primary">Login</button>
 
 </form>
