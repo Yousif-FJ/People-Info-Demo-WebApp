@@ -10,12 +10,20 @@ namespace WebApplication1.Module.FileRepositories
 {
     public class RootFileRepository : IFileRepository
     {
-        private readonly string FileConatiner ;
+        private readonly string fileConatiner ;
+
+        public string FileConatiner
+        {
+            get {
+                Directory.CreateDirectory(fileConatiner);
+                return fileConatiner;
+            }
+        }
 
         public RootFileRepository(IWebHostEnvironment webHostEnvironment)
         {
             if (webHostEnvironment is null) { throw new ArgumentNullException(nameof(webHostEnvironment)); };
-            FileConatiner = Path.Combine(webHostEnvironment.WebRootPath, "Pictures");
+            fileConatiner = Path.Combine(webHostEnvironment.WebRootPath, "Pictures");
         }
 
         public Person AddPersonFile(AddPerson personWithFile)
