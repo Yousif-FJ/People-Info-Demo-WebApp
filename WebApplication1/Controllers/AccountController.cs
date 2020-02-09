@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.ViewModule;
 
 namespace WebApplication1.Controllers
 {
+    
     public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> userManager;
@@ -21,12 +23,14 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public ViewResult Register()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(AccountDetail register)
         {
             if (!ModelState.IsValid)
@@ -53,12 +57,14 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public ViewResult Login()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(AccountDetail login)
         {
             if (!ModelState.IsValid)

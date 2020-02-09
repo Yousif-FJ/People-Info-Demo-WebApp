@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace WebApplication1.Controllers
 {
+    [AllowAnonymous]
     public class ErrorController : Controller
     {
         private readonly ILogger logger;
@@ -19,7 +20,7 @@ namespace WebApplication1.Controllers
         }
 
         [Route("Error")]
-        [AllowAnonymous]
+
         public IActionResult Error()
         {
 
