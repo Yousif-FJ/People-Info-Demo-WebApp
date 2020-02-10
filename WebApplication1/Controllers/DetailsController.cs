@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Module;
 using WebApplication1.Module.FileRepositories;
@@ -90,11 +91,7 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public IActionResult UpdatePhoto(UploadPicture uploadPicture)
         {
-            if (uploadPicture is null)
-            {
-                return RedirectToAction("PersonError", "Error");
-            }
-            if (uploadPicture.FormFile is null)
+            if (!ModelState.IsValid)
             {
                 return View(uploadPicture);
             }
