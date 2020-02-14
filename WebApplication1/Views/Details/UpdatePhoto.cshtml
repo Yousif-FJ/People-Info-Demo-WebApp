@@ -11,8 +11,11 @@
                 <label asp-for="FormFile">Chose a new photo</label><br />
                 <input asp-for="FormFile" />
             </div>
-            <input asp-for="PersonID" hidden/>
+
+            <input asp-for="PersonID" hidden />
             <input asp-for="FilePath" hidden />
+
+            <div class="text-danger" asp-validation-summary="All"></div>
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>

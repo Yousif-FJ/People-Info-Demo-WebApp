@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplication1.Module;
+using WebApplication1.ValidationAttributes;
 
 namespace WebApplication1.ViewModule
 {
@@ -12,7 +13,10 @@ namespace WebApplication1.ViewModule
     {
         [Required]
         public Person Person { get; set; }
+
         [DataType(DataType.Upload)]
+        [AlowPicture]
+        [MaxFileSize(102400)]
         public IFormFile Picture { get; set; } 
     }
 }

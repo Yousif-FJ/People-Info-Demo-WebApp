@@ -10,6 +10,7 @@ using WebApplication1.Module.PersonRepositories;
 using WebApplication1.Module;
 using WebApplication1.ViewModule;
 using WebApplication1.Module.FileRepositories;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplication1.Controllers
 {
@@ -24,6 +25,7 @@ namespace WebApplication1.Controllers
             this.fileRepository = fileRepository;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
 

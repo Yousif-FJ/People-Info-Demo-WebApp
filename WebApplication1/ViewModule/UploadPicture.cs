@@ -4,13 +4,16 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApplication1.ValidationAttributes;
 
 namespace WebApplication1.ViewModule
 {
     public class UploadPicture
     {
-        [Required]
+        [Required(ErrorMessage ="Select photo")]
         [DataType(DataType.Upload)]
+        [AlowPicture]
+        [MaxFileSize(102400)]
         public IFormFile FormFile { get; set; }
         [Required]
         public int PersonID { get; set; }
