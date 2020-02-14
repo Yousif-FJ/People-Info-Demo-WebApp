@@ -52,7 +52,7 @@ namespace WebApplication1.Controllers
             await signInManager.SignInAsync(user,register.PresistantLogin)
                 .ConfigureAwait(true);
 
-            return RedirectToAction("Index","Home");
+            return RedirectToAction(nameof(HomeController.Index),nameof(HomeController)[0..^10]);
         }
 
         [HttpGet]
@@ -84,14 +84,14 @@ namespace WebApplication1.Controllers
                 return View(login);
             }
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction(nameof(HomeController.Index), nameof(HomeController)[0..^10]);
         }
 
         [HttpPost]
         public IActionResult Logout()
         {
             signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction(nameof(HomeController.Index), nameof(HomeController)[0..^10]);
         }
     }
 }

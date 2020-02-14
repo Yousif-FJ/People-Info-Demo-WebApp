@@ -31,7 +31,7 @@ namespace WebApplication1.Controllers
             };
             if (personDetails.Person is null)
             {
-                return RedirectToAction("PersonError", "Error", new { id });
+                return RedirectToAction(nameof(ErrorController.PersonError),nameof(ErrorController)[0..^10], new { id });
             }
             personDetails.Person = fileRepository.CheckFile(personDetails.Person);
             return View(personDetails);
@@ -42,11 +42,11 @@ namespace WebApplication1.Controllers
             Person ToDelete = personRepository.GetPerson(id);
             if (ToDelete is null)
             {
-                return RedirectToAction("PersonError", "Error", new { id });
+                return RedirectToAction(nameof(ErrorController.PersonError), nameof(ErrorController)[0..^10], new { id });
             }
             personRepository.DeletePerson(ToDelete);
             fileRepository.RemoveFile(ToDelete.FileName);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction(nameof(HomeController.Index), nameof(HomeController)[0..^10]);
         }
 
         [HttpGet]
@@ -55,7 +55,7 @@ namespace WebApplication1.Controllers
             Person person = personRepository.GetPerson(id);
             if (person is null)
             {
-                return RedirectToAction("PersonError", "Error", new { id });
+                return RedirectToAction(nameof(ErrorController.PersonError), nameof(ErrorController)[0..^10], new { id });
             }
                 return View(person);
         }
@@ -66,7 +66,7 @@ namespace WebApplication1.Controllers
             if (ModelState.IsValid)
             {
                 personRepository.UpdatePerson(person);
-                return RedirectToAction(actionName: "Detail", routeValues: new { id = person.ID });
+                return RedirectToAction(actionName: nameof(Detail), routeValues: new { id = person.ID });
             }
             return View(person);
         }
@@ -77,7 +77,7 @@ namespace WebApplication1.Controllers
             Person person = personRepository.GetPerson(id);
             if (person is null)
             {
-                return RedirectToAction("PersonError", "Error", new { id });
+                return RedirectToAction(nameof(ErrorController.PersonError), nameof(ErrorController)[0..^10], new { id });
             }
             UploadPicture uploadPicture = new UploadPicture
             {
@@ -102,11 +102,12 @@ namespace WebApplication1.Controllers
             };
             if (personWithFile.Person is null)
             {
-                return RedirectToAction("PersonError", "Error", new { id = uploadPicture.PersonID });
+                return RedirectToAction(nameof(ErrorController.PersonError),
+                    nameof(ErrorController)[0..^10], new { id = uploadPicture.PersonID });
             }
             Person person = fileRepository.UpdatePhoto(personWithFile);
             personRepository.UpdatePerson(person);
-            return RedirectToAction(actionName: "Detail", routeValues: new { id = personWithFile.Person.ID });
+            return RedirectToAction(actionName: nameof(Detail), routeValues: new { id = personWithFile.Person.ID });
         }
     }
 }

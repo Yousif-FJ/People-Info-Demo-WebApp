@@ -47,7 +47,7 @@ namespace WebApplication1.Controllers
             {
                 Person person = fileRepository.AddPersonFile(personWithFile);
                 personRepository.AddPerson(person);
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
             return View(personWithFile);
         }
