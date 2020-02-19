@@ -27,10 +27,25 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
-
+        
+        [AllowAnonymous]
+        [AcceptVerbs("GET","POST")]
+        public async Task<IActionResult> IsUserNameAvailable(string UserName)
+        {
+            var Result = await userManager.FindByNameAsync(UserName).ConfigureAwait(true);
+            if (Result is null)
+            {
+            return Json(true);
+            }
+            else
+            {
+                return Json($"The User Name {UserName} is already in use");
+            }
+        }
+        
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Register(AccountDetail register)
+        public async Task<IActionResult> Register(LoginViewModel register)
         {
             if (!ModelState.IsValid)
             {
@@ -65,7 +80,7 @@ namespace WebApplication1.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Login(AccountDetail login)
+        public async Task<IActionResult> Login(LoginViewModel login)
         {
             if (!ModelState.IsValid)
             {
