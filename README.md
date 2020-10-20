@@ -1,6 +1,8 @@
 # People-Info-Demo-WebApp
 People-Info-Demo-WebApp is MVC test project with ASP.NET Core, it is like simple people information storage. 
-The project feature:
+Check the app try out video, to quickly understand the funtions and features of the project:
+https://youtu.be/utBVAY4n8Io
+The project use/has:
 - CRUD operations
 - Model validation
 - Bootstrap
